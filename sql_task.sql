@@ -33,7 +33,7 @@ order by b.name;
 select a.*
 from tasks as a, projects as b
 where a.project_id = b.id
-and b.name like 'N%'
+and b.name like 'N%';
 
 -- 5. get the list of all projects containing the ‘a’ letter in the middle of the name, and
 --    show the tasks count near each project. Mention that there can exist projects without
@@ -43,14 +43,14 @@ from tasks as a
 right join projects as b
 on a.project_id = b.id
 where b.name like '%_a_%'
-group by b.name
+group by b.name;
 
 -- 6. get the list of tasks with duplicate names. Order alphabetically
 select name
 from tasks
 group by name
 having count(*) > 1
-order by name
+order by name;
 
 -- 7. get the list of tasks having several exact matches of both name and status, from
 --    the project ‘Garage’. Order by matches count
@@ -60,8 +60,7 @@ where a.project_id = b.id
 and b.name = 'Garage'
 group by a.name, a.status
 having count(*) > 1
-order by count(*)
-
+order by count(*);
 
 -- 8. get the list of project names having more than 10 tasks in status ‘completed’. Order
 --    by project_id
@@ -71,4 +70,4 @@ where a.project_id = b.id
 and a.status = 'completed'
 group by b.name, a.project_id
 having count(a.id) > 10
-order by a.project_id
+order by a.project_id;
